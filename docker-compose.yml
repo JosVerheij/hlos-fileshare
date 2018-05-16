@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  samba:
+    image: dperson/samba:latest
+    container_name: samba
+    restart: always
+    volumes:
+      - /mnt:/mount
+      - ${PWD}/samba/smb.conf:/etc/samba/smb.conf
+    ports:
+      - 139:139
+      - 445:445
+    environment:
+      - TZ="Europe/Amsterdam"
