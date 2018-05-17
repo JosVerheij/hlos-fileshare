@@ -8,8 +8,11 @@ services:
     volumes:
       - /mnt/store:/srv/samba
       - ${PWD}/samba/smb.conf:/etc/samba/smb.conf
+      - ${PWD}/samba/k4b5.conf:/etc/krb5.conf
     ports:
       - 139:139
       - 445:445
     environment:
       - TZ="Europe/Amsterdam"
+    dns: 10.70.0.4
+    dns_search: ad.hippoline.nl
