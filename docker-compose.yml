@@ -6,7 +6,7 @@ services:
     container_name: samba
     restart: always
     volumes:
-      - /mnt:/mount
+      - /mnt/store:/srv/samba
       - ${PWD}/samba/smb.conf:/etc/samba/smb.conf
     ports:
       - 139:139
