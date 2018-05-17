@@ -9,6 +9,7 @@ services:
       - /mnt/store:/srv/samba
       - ${PWD}/samba/smb.conf:/etc/samba/smb.conf
       - ${PWD}/samba/k4b5.conf:/etc/krb5.conf
+      - ${PWD}/samba/nsswitch.conf:/etc/nsswitch.conf
     ports:
       - 139:139
       - 445:445
@@ -16,3 +17,6 @@ services:
       - TZ="Europe/Amsterdam"
     dns: 10.70.0.4
     dns_search: ad.hippoline.nl
+    hostname: samba
+    extra_hosts:
+      - "samba.ad.hippoline.nl:10.80.10.10"
