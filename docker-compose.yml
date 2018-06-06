@@ -1,22 +1,31 @@
 version: "3"
 
 services:
-  samba:
-    image: dperson/samba:latest
-    container_name: samba
+  # samba:
+  #   image: dperson/samba:latest
+  #   container_name: samba
+  #   restart: always
+  #   volumes:
+  #     - /mnt/store:/srv/samba
+  #     - ${PWD}/samba/smb.conf:/etc/samba/smb.conf
+  #     # - ${PWD}/samba/k4b5.conf:/etc/krb5.conf
+  #     # - ${PWD}/samba/nsswitch.conf:/etc/nsswitch.conf
+  #   ports:
+  #     - 139:139
+  #     - 445:445
+  #   environment:
+  #     - TZ="Europe/Amsterdam"
+  #   dns: 10.70.0.4
+  #   dns_search: ad.hippoline.nl
+  #   hostname: samba
+  #   extra_hosts:
+  #     - "samba.ad.hippoline.nl:10.80.10.10"
+
+  rsync:
+    image: kwarc/ssh-rsync:latest
+    container_name: rsync
     restart: always
     volumes:
-      - /mnt/store:/srv/samba
-      - ${PWD}/samba/smb.conf:/etc/samba/smb.conf
-      # - ${PWD}/samba/k4b5.conf:/etc/krb5.conf
-      # - ${PWD}/samba/nsswitch.conf:/etc/nsswitch.conf
-    ports:
-      - 139:139
-      - 445:445
+      - /mnt/fileshares
     environment:
-      - TZ="Europe/Amsterdam"
-    # dns: 10.70.0.4
-    # dns_search: ad.hippoline.nl
-    # hostname: samba
-    # extra_hosts:
-    #   - "samba.ad.hippoline.nl:10.80.10.10"
+      - SSH_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHmmhTWnU95smy9xj+82iEFKYUQNnX2oripa+xzSM8n/mi3XBDJuvT3qSY24uNh9LKfqhSuqQ1AHbpV6lksdon9JKA3IA2bXpePLmRIYhQ1R9vMLMJPQ6gQLnyVv6I3cFK6/jauI2wTEJWvVjFo0Oox8T07mXDRnYc+twV4SPM6khL/K6WrAjTfi43Q91wiYrvUeN4dpmjibgN/mBo8Hpkns9ZNMfTzIjrF9MGoZnh0seVyZAOkI00YO+Vg3rByF6uBrcP6j2WE/D8b6E+1pd3MQrQdc33IiqIbwtCABbHg5jqMNmo8m2akSxp7S9N4kH4UHpu3DCA7GPx5B1cLLlKBuciVAY6IpOUs/7LWjBqqq5/Tc1krVLBkZwm+tzdo9CKORJbXtBeBkbF1xdZVAVMf2UQt4fr3WJ+Auhm4V3mCWDRsLpNipA0gbdvkNjxfMbpcULNY72IQ0I+vuoztIsMLzb7R6usy+n+Qk2iRlmsuJLD1qeG6WHAAeNAAszIkpKBqvTDx30jfJydWPd0Dovjk1sIKT400ASz714v48e8TmK4WsMq/uym2jwQYF0BuSetjlJdEGNlGj++TOsejYAmOACsz8Lf/UEl+dwZcceOrlyd4XzIy26lab55cWqagrkEIyhKczHvZd2UdgdkZl/yOfGTwZose54cgOd3uD4pWw== jos@MacBook-Pro.domo"
