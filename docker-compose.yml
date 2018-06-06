@@ -26,7 +26,7 @@ services:
     container_name: rsync
     restart: always
     volumes:
-      - /mnt/fileshares
+      - /mnt/fileshares:/fileshares
     ports:
       - 2244:2222
     environment:
