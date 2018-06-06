@@ -28,8 +28,8 @@ services:
     volumes:
       - /mnt/fileshares:/home/samba/ftp
       # - ./sftp/users.conf:/etc/sftp/users.conf:ro
-      - ./sftp/id_rsa.pub:/home/jos/.ssh/keys/id_rsa.pub:ro
+      # - ./sftp/id_rsa.pub:/home/jos/.ssh/keys/id_rsa.pub:ro
     ports:
       - "2244:22"
-    command: samba::1001
+    command: samba:test:1001
   
