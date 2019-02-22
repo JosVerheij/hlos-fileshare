@@ -8,7 +8,7 @@ services:
     volumes:
       - ./sftp/users.conf:/etc/sftp/users.conf:ro # users
       - /storage/ftp/hippoline:/home/hippoline    # hippoline
-      - ./sftp/keys/hippoline.pub:/home/hippoline/.ssh/hippoline.pub:ro # hippoline ssh
+      - ./sftp/keys/hippoline.pub:/home/hippoline/.ssh/keys/hippoline.pub:ro # hippoline ssh
     ports:
       - "2244:22"
   
