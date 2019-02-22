@@ -1,35 +1,15 @@
 version: "3"
 
 services:
-  # samba:
-  #   image: dperson/samba:latest
-  #   container_name: samba
-  #   restart: always
-  #   volumes:
-  #     - /mnt/store:/srv/samba
-  #     - ${PWD}/samba/smb.conf:/etc/samba/smb.conf
-  #     # - ${PWD}/samba/k4b5.conf:/etc/krb5.conf
-  #     # - ${PWD}/samba/nsswitch.conf:/etc/nsswitch.conf
-  #   ports:
-  #     - 139:139
-  #     - 445:445
-  #   environment:
-  #     - TZ="Europe/Amsterdam"
-  #   dns: 10.70.0.4
-  #   dns_search: ad.hippoline.nl
-  #   hostname: samba
-  #   extra_hosts:
-  #     - "samba.ad.hippoline.nl:10.80.10.10"
-
   sftp:
     image: atmoz/sftp:alpine
     container_name: sftp
     restart: always
     volumes:
-      - /mnt/fileshares:/home/samba/ftp
-      # - ./sftp/users.conf:/etc/sftp/users.conf:ro
-      # - ./sftp/id_rsa.pub:/home/jos/.ssh/keys/id_rsa.pub:ro
+      - ./sftp/users.conf:/etc/sftp/users.conf:ro # users
+      - /storage/ftp/hippoline:/home/hippoline    # hippoline
+      - ./sftp/keys/hippoline.pub:/home/hippoline/.ssh/hippoline.pub:ro # hippoline ssh
     ports:
       - "2244:22"
-    command: samba:test:1001:100
   
+  # zie https://hub.docker.com/r/atmoz/sftp
