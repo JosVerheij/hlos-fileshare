@@ -2,6 +2,11 @@ version: "3"
 
 volumes:
   ftpdata:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/storage/ftp'
 
 services:
   sftp:
