@@ -6,7 +6,7 @@ SFTP server.
 Maakt gebruik van docker atmoz/sftp
 <https://hub.docker.com/r/atmoz/sftp/>
 
-Zie die docs voor aanmaak encrypted wachtwoord
+NB: bij loss van systeem handmatig private key toevoegen aan docker systeem
 
 ## Disk mounten
 
